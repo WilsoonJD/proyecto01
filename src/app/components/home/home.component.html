@@ -1,0 +1,14 @@
+<div *ngFor='let art of NuevasArtes' class="card-columns">
+    <div class="card">
+        <img class="card-img-top" [src]="art.baseimageurl" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">
+                {{art.alttext}}
+            </h4>
+            <p class="card-text">
+                {{art.description}}
+            </p>
+        </div>
+    </div>
+
+</div>
