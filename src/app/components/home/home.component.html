@@ -1,4 +1,12 @@
-<div *ngFor='let art of NuevasArtes' class="card-columns">
+<div class="col-md-12">
+  <pagination-controls
+    id="art"
+    previousLabel="Ant"
+    nextLabel="Sigui"
+    (pageChange)="handlePageChange($event)"
+  ></pagination-controls>
+</div>
+<div *ngFor="let art of NuevasArtes |  paginate: { id: 'art', itemsPerPage: sizeSelected, currentPage: page, totalItems: NuevasArtes.length}" class="card-columns">
     <div class="card">
         <img class="card-img-top" [src]="art.baseimageurl" alt="Card image cap">
         <div class="card-body">
@@ -10,5 +18,12 @@
             </p>
         </div>
     </div>
-
+</div>
+<div class="mt-3">
+  Items por página:
+  <select (change)="handlePageSizeChange($event)">
+    <option *ngFor="let size of pageSizes">
+      {{ size }}
+    </option>
+  </select>
 </div>
