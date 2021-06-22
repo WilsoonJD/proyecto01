@@ -14,6 +14,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 //importar Rutas
 import { ROUTES } from './app.routes';
+import { LoadingComponent } from './components/loading/loading.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ROUTES } from './app.routes';
     HomeComponent,
     SearchComponent,
     ArtistaComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

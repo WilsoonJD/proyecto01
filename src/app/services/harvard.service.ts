@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const baseUrl = 'https://api.harvardartmuseums.org';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class HarvardService {
     console.log ('Servicio Listo');
    }
 
-   getNewArt(){
+   /*getNewArt(){
 
     const params = new HttpParams()
     .set('apikey', '450c4a44-802f-47e1-b8ed-7d5774bc7639')
@@ -22,11 +23,17 @@ export class HarvardService {
 
 
     return this.http.get(`${baseUrl}/image?`, { params });
-   }
+   }*/
 
    getPaginatedArt(params: any): Observable<any> {
      params.apikey = '450c4a44-802f-47e1-b8ed-7d5774bc7639';
      params.q = 'format="image/jpeg"';
      return this.http.get(`${baseUrl}/image?`, { params });
+   }
+
+   getBusqueda(termino: string, params: any): Observable<any> {
+    params.apikey = '450c4a44-802f-47e1-b8ed-7d5774bc7639';
+    params.q = `${termino} format="image/jpeg"`;
+    return this.http.get(`${baseUrl}/image?`, { params });
    }
 }

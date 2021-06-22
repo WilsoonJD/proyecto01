@@ -20,13 +20,19 @@ export class HomeComponent implements OnInit {
   pageSizes = [5, 10, 20, 30, 40, 50];
 
   NuevasArtes: any[] = [];
+
+  cargando: boolean = true;
+
   constructor( private harvardService: HarvardService) {
   }
 
    ngOnInit() {
+    this.cargando;
     this.retrieveData();
-  }
 
+  }
+  
+  
   /*
    * Método consumir el servicio que se conecta a la api
    */
@@ -36,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.harvardService.getPaginatedArt(params).subscribe( (data : any) => {
       console.log(data.records);
       this.NuevasArtes = data.records;
+      this.cargando = false;
       });
    };
 
