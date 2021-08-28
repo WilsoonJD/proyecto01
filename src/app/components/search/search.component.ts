@@ -22,7 +22,7 @@ export class SearchComponent  implements OnInit{
 
   artistas : any[] = []
   cargando: boolean = true;
-
+  error: boolean = false;
   constructor( private harvardService: HarvardService) { }
 
   ngOnInit() {
@@ -51,7 +51,13 @@ export class SearchComponent  implements OnInit{
       console.log(data.records);
       this.artistas = data.records;
       this.cargando = false;
-      });
+      }, ( errorServicio) => {
+
+        this.cargando = false;
+        this.error = true;
+        console.log(errorServicio);
+        console.log(errorServicio.error);
+      } );
    };
 
    /*
@@ -91,4 +97,12 @@ export class SearchComponent  implements OnInit{
     this.retrieveData("");
   }
 
+  
+  goToSpecificUrl(url: any): void {
+    
+    window.location = url;
+  }
+  
+ 
+  
 }

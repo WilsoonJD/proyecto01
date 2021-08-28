@@ -6,6 +6,13 @@
 
 <app-loading *ngIf="cargando"></app-loading>
 
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>
+        Busqueda fallida, intente de nuevo
+    </p>
+</div>
+
 <div class="mt-3" align="right" *ngIf="!cargando">
     Items por página:
     <select (change)="handlePageSizeChange($event)">
@@ -15,20 +22,20 @@
   </select>
 </div>
 
-<div *ngFor="let art of artistas|  paginate: { id: 'art', itemsPerPage: sizeSelected, currentPage: page, totalItems: artistas.length}" class="card-columns">
+<div (click)="goToSpecificUrl(art.baseimageurl)" *ngFor="let art of artistas| paginate: { id: 'art', itemsPerPage: sizeSelected, currentPage: page, totalItems: artistas.length} " class="card-group puntero ">
     <div class="card mb-3">
-        <img class="card-img-top" [src]="art.baseimageurl" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">
+        <img class="card-img-top" [src]="art.baseimageurl " alt="Card image cap ">
+        <div class="card-body ">
+            <h4 class="card-title ">
                 {{art.alttext}}
             </h4>
-            <p class="card-text">
+            <p class="card-text ">
                 {{art.description}}
             </p>
         </div>
     </div>
 </div>
 
-<div class="col-md-12" *ngIf="!cargando">
-    <pagination-controls id="art" previousLabel="Ant" nextLabel="Sigui" (pageChange)="handlePageChange($event)"></pagination-controls>
+<div class="col-md-12 " *ngIf="!cargando ">
+    <pagination-controls id="art " previousLabel="Ant " nextLabel="Sigui " (pageChange)="handlePageChange($event) "></pagination-controls>
 </div>

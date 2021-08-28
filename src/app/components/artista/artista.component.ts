@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HarvardService } from '../../services/harvard.service';
 
 @Component({
   selector: 'app-artista',
@@ -6,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ArtistaComponent implements OnInit {
+export class ArtistaComponent  {
 
+ 
+  
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  
 
 }
